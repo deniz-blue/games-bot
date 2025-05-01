@@ -8,6 +8,9 @@ const commands = [
     new SlashCommandBuilder()
         .setName("tictactoe")
         .setDescription("Play TicTacToe with someone"),
+    new SlashCommandBuilder()
+        .setName("react-router")
+        .setDescription("react-router experiment"),
 ];
 
 (async () => {

@@ -2,6 +2,7 @@ import "dotenv/config";
 import { Client, Collection, Events } from "discord.js";
 import { djsx } from "./djsx";
 import { TicTacToe } from "./games/TicTacToe";
+import { ReactRouterExperiment } from "./experiments/ReactRouterExperiment";
 
 const client = new Client({
     intents: [],
@@ -35,6 +36,11 @@ client.on(Events.InteractionCreate, (interaction) => {
 
     if(interaction.commandName == "tictactoe") {
         djsx.create(interaction, <TicTacToe interaction={interaction} />);
+        return;
+    };
+
+    if(interaction.commandName == "react-router") {
+        djsx.create(interaction, <ReactRouterExperiment />);
         return;
     };
 });
