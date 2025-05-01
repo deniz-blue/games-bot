@@ -1,4 +1,4 @@
-import { ButtonInteraction, ChatInputCommandInteraction, User, userMention } from "discord.js";
+import { ButtonInteraction, ChatInputCommandInteraction, ColorResolvable, User, userMention } from "discord.js";
 import { useState } from "react";
 
 type CellState = "" | "X" | "O";
@@ -18,6 +18,7 @@ const winPatterns = [
 
 const xSymbol = "❌";
 const oSymbol = "⭕";
+const zeroWidthSpace = "​";
 
 export const getOutcome = (state: GameState): "draw" | "X" | "O" | "continue" => {
     for (let [i1, i2, i3] of winPatterns) {
@@ -52,9 +53,15 @@ export const TicTacToe = ({
 
     const outcome = getOutcome(state);
 
+    let color: ColorResolvable | undefined;
+    if(opponent) color = turn == "opponent" ? "Blurple" : "Red";
+    if(outcome == "draw") color = "Grey";
+    if(outcome == "X") color = "Red";
+    if(outcome == "O") color = "Blurple";
+
     return (
         <message v2>
-            <container>
+            <container color={color}>
                 <text>
                     # TicTacToe
                 </text>
@@ -82,6 +89,8 @@ export const TicTacToe = ({
                                 ### Winner: {outcome == "X" ? userMention(player.id) : userMention(opponent.id)} 🏆
                             </text>
                         )}
+
+                        <separator divider />
 
                         <ButtonGrid3x3
                             state={state}
@@ -150,13 +159,15 @@ export const ButtonGrid3x3 = ({
 }) => {
     const btn = (idx: number) => (
         <button
-            style="secondary"
+            style={!!state[idx] ? (
+                state[idx] == "X" ? "danger" : "primary"
+            ) : "secondary"}
             onClick={(int) => onClick(int, idx)}
             disabled={disabled}
         >
             {state[idx] == "O" && oSymbol}
             {state[idx] == "X" && xSymbol}
-            {state[idx] == "" && "_"}
+            {state[idx] == "" && zeroWidthSpace}
         </button>
     );
 
