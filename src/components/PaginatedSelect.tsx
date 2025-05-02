@@ -7,11 +7,17 @@ export const PaginatedSelect = ({
     prevProps,
     nextProps,
     predicate,
+    disabled,
+    value,
+    placeholder,
 }: PropsWithChildren<{
     onSelect?: (value: string, interaction: StringSelectMenuInteraction) => void;
     prevProps?: Omit<APISelectMenuOption, "default" | "value">;
     nextProps?: Omit<APISelectMenuOption, "default" | "value">;
     predicate?: (interaction: StringSelectMenuInteraction) => boolean;
+    disabled?: boolean;
+    value?: string | null;
+    placeholder?: string;
 }>) => {
     const [currentPage, setCurrentPage] = useState(1);
     const PageSize = 23;
@@ -31,6 +37,9 @@ export const PaginatedSelect = ({
     return (
         <select
             type="string"
+            disabled={disabled}
+            defaultValues={value ? [value] : undefined}
+            placeholder={placeholder}
             onSelect={([value], interaction) => {
                 if(predicate && !predicate(interaction)) return;
                 if(value == customIdPrev) return setCurrentPage(p => p-1);

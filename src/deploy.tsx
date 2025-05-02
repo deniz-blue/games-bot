@@ -2,6 +2,14 @@ import "dotenv/config";
 import { REST, SlashCommandBuilder, Routes } from "discord.js";
 import { clientId, guildId } from "./config.json"
 
+declare global {
+	namespace NodeJS {
+		interface ProcessEnv {
+			TOKEN: string;
+		}
+	}
+}
+
 const rest = new REST().setToken(process.env.TOKEN);
 
 const commands = [
@@ -14,6 +22,9 @@ const commands = [
     new SlashCommandBuilder()
         .setName("paginated-select")
         .setDescription("paginated-select experiment"),
+    new SlashCommandBuilder()
+        .setName("osu")
+        .setDescription("osu-web"),
 ];
 
 (async () => {

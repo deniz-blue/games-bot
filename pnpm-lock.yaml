@@ -14,6 +14,9 @@ importers:
       discord.js:
         specifier: ^14.19.2
         version: 14.19.2
+      osu-web.js:
+        specifier: ^2.6.0
+        version: 2.6.0
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -112,6 +115,9 @@ packages:
 
   magic-bytes.js@1.12.1:
     resolution: {integrity: sha512-ThQLOhN86ZkJ7qemtVRGYM+gRgR8GEXNli9H/PMvpnZsE44Xfh3wx9kGJaldg314v85m+bFW6WBMaVHJc/c3zA==}
+
+  osu-web.js@2.6.0:
+    resolution: {integrity: sha512-XGhraa3AaSTNadZIjJPAygY6CzENvtuognH3E3tNCK2a+PloKD/jhuShszgh185P+BZIckZKLPardj6y83+a9g==}
 
   pure-react-types@0.1.4:
     resolution: {integrity: sha512-8y1P/kWmo839jDqhLnaTAatjwU2SVjs34iwOwYtiMdcfGLBGiOrUTPjpb9hOgTB3cPNuAT0q90AtmPEIp1zJxA==}
@@ -281,6 +287,8 @@ snapshots:
   lodash@4.17.21: {}
 
   magic-bytes.js@1.12.1: {}
+
+  osu-web.js@2.6.0: {}
 
   pure-react-types@0.1.4: {}
 

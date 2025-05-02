@@ -4,6 +4,7 @@ import { djsx } from "./djsx";
 import { TicTacToe } from "./games/TicTacToe";
 import { ReactRouterExperiment } from "./experiments/ReactRouterExperiment";
 import { PaginatedSelectExperiment } from "./experiments/PaginatedSelectExperiment";
+import { OsuWeb } from "./experiments/osu/OsuWeb";
 
 const client = new Client({
     intents: [],
@@ -47,6 +48,11 @@ client.on(Events.InteractionCreate, (interaction) => {
 
     if(interaction.commandName == "paginated-select") {
         djsx.create(interaction, <PaginatedSelectExperiment />);
+        return;
+    };
+
+    if(interaction.commandName == "osu") {
+        djsx.create(interaction, <OsuWeb />);
         return;
     };
 });
