@@ -3,6 +3,7 @@ import { Client, Collection, Events } from "discord.js";
 import { djsx } from "./djsx";
 import { TicTacToe } from "./games/TicTacToe";
 import { ReactRouterExperiment } from "./experiments/ReactRouterExperiment";
+import { PaginatedSelectExperiment } from "./experiments/PaginatedSelectExperiment";
 
 const client = new Client({
     intents: [],
@@ -41,6 +42,11 @@ client.on(Events.InteractionCreate, (interaction) => {
 
     if(interaction.commandName == "react-router") {
         djsx.create(interaction, <ReactRouterExperiment />);
+        return;
+    };
+
+    if(interaction.commandName == "paginated-select") {
+        djsx.create(interaction, <PaginatedSelectExperiment />);
         return;
     };
 });

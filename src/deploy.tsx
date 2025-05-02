@@ -11,6 +11,9 @@ const commands = [
     new SlashCommandBuilder()
         .setName("react-router")
         .setDescription("react-router experiment"),
+    new SlashCommandBuilder()
+        .setName("paginated-select")
+        .setDescription("paginated-select experiment"),
 ];
 
 (async () => {
