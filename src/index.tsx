@@ -1,4 +1,5 @@
 import "dotenv/config";
+import "./devtools";
 import { Client, Collection, Events } from "discord.js";
 import { djsx } from "./djsx";
 import { TicTacToe } from "./games/TicTacToe";
