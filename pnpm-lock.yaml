@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  react-devtools-core@6.1.1:
+    hash: lgdlttl3nuuddcslhj3rdzv56y
+    path: patches/react-devtools-core@6.1.1.patch
+
 importers:
 
   .:
@@ -35,7 +40,7 @@ importers:
         version: 6.1.1
       react-devtools-core:
         specifier: ^6.1.1
-        version: 6.1.1
+        version: 6.1.1(patch_hash=lgdlttl3nuuddcslhj3rdzv56y)
 
 packages:
 
@@ -1438,7 +1443,7 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-devtools-core@6.1.1:
+  react-devtools-core@6.1.1(patch_hash=lgdlttl3nuuddcslhj3rdzv56y):
     dependencies:
       shell-quote: 1.8.2
       ws: 7.5.10
@@ -1452,7 +1457,7 @@ snapshots:
       electron: 23.3.13
       internal-ip: 6.2.0
       minimist: 1.2.8
-      react-devtools-core: 6.1.1
+      react-devtools-core: 6.1.1(patch_hash=lgdlttl3nuuddcslhj3rdzv56y)
       update-notifier: 2.5.0
     transitivePeerDependencies:
       - bufferutil
