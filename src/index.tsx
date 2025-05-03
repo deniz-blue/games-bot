@@ -23,7 +23,7 @@ client.login(process.env.TOKEN);
 
 const beforeExit = () => {
     djsx.disable()
-        .catch(e => console.log(e))
+        .catch((e: Error) => console.log(e))
         .finally(() => process.exit(0));
 };
 

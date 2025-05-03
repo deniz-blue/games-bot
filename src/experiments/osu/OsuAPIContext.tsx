@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, PropsWithChildren, ReactNode, use, useContext, useEffect, useState } from "react";
 import { Auth, Client } from 'osu-web.js';
 
 declare global {
@@ -10,32 +10,28 @@ declare global {
     }
 }
 
+export const createOsuAPI = async () => {
+    const auth = new Auth(
+        parseInt(process.env.OSU_CLIENT_ID as string),
+        process.env.OSU_CLIENT_SECRET as string,
+        "http://localhost:300"
+    );
+    const token = await auth.clientCredentialsGrant(["public", "identify"]);
+    return new Client(token.access_token);
+};
+
+export const getOsuAPIPromise = createOsuAPI();
+
 export const OsuAPIContext = createContext<Client | null>(null);
 
 export const OsuAPIProvider = ({
     children,
-    fallback,
-}: PropsWithChildren<{
-    fallback: React.ReactNode;
-}>) => {
-    const [api, setApi] = useState<Client | null>(null);
-
-    useEffect(() => {
-        (async () => {
-            const auth = new Auth(
-                parseInt(process.env.OSU_CLIENT_ID as string),
-                process.env.OSU_CLIENT_SECRET as string,
-                "http://localhost:300"
-            );
-            const token = await auth.clientCredentialsGrant(["public", "identify"]);
-            const api = new Client(token.access_token);
-            setApi(api);
-        })();
-    }, []);
+}: PropsWithChildren) => {
+    const api = use(getOsuAPIPromise);
 
     return (
         <OsuAPIContext value={api}>
-            {api ? children : fallback}
+            {children}
         </OsuAPIContext>
     );
 };
