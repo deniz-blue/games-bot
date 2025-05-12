@@ -17,6 +17,9 @@ const commands = [
         .setName("tictactoe")
         .setDescription("Play TicTacToe with someone"),
     new SlashCommandBuilder()
+        .setName("counter")
+        .setDescription("Counter example"),
+    new SlashCommandBuilder()
         .setName("react-router")
         .setDescription("react-router experiment"),
     new SlashCommandBuilder()

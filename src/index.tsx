@@ -2,10 +2,12 @@ import "dotenv/config";
 import "./devtools";
 import { Client, Collection, Events } from "discord.js";
 import { djsx } from "./djsx";
-import { TicTacToe } from "./games/TicTacToe";
-import { ReactRouterExperiment } from "./experiments/ReactRouterExperiment";
-import { PaginatedSelectExperiment } from "./experiments/PaginatedSelectExperiment";
-import { OsuWeb } from "./experiments/osu/OsuWeb";
+import { TicTacToe } from "./commands/games/TicTacToe";
+import { ReactRouterExperiment } from "./commands/experiments/ReactRouterExperiment";
+import { PaginatedSelectExperiment } from "./commands/experiments/PaginatedSelectExperiment";
+import { OsuWeb } from "./commands/experiments/osu/OsuWeb";
+import { traverseAllFiles } from "./utils/filesystem";
+import { Counter } from "./commands/demos/Counter";
 
 const client = new Client({
     intents: [],
@@ -30,12 +32,15 @@ const beforeExit = () => {
 process.on("SIGTERM", beforeExit);
 process.on("SIGINT", beforeExit);
 
-
-
 // Command handling
 
 client.on(Events.InteractionCreate, (interaction) => {
     if(!interaction.isChatInputCommand()) return;
+
+    if(interaction.commandName == "counter") {
+        djsx.create(interaction, <Counter />);
+        return;
+    };
 
     if(interaction.commandName == "tictactoe") {
         djsx.create(interaction, <TicTacToe interaction={interaction} />);

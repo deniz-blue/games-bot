@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PaginatedSelect } from "../components/PaginatedSelect";
+import { PaginatedSelect } from "../../components/PaginatedSelect";
 import { inlineCode } from "discord.js";
 
 export const PaginatedSelectExperiment = () => {

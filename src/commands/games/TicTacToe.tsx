@@ -66,7 +66,7 @@ export const TicTacToe = ({
                     # TicTacToe
                 </text>
 
-                {opponent ? (
+                {opponent && turnUser ? (
                     <>
                         <text>
                             {userMention(player.id)} {xSymbol} vs {oSymbol} {userMention(opponent.id)}
@@ -162,7 +162,7 @@ export const ButtonGrid3x3 = ({
             style={!!state[idx] ? (
                 state[idx] == "X" ? "danger" : "primary"
             ) : "secondary"}
-            onClick={(int) => onClick(int, idx)}
+            onClick={(int) => onClick?.(int, idx)}
             disabled={disabled}
         >
             {state[idx] == "O" && oSymbol}

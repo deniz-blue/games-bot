@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { useOsuAPI } from "../OsuAPIContext";
 import { Changelog, ChangelogEntry, GithubUser, UpdateStream } from "osu-web.js";
-import { PaginatedSelect } from "../../../components/PaginatedSelect";
+import { PaginatedSelect } from "../../../../components/PaginatedSelect";
 import { LinkButton } from "../components/LinkButton";
 
 export const OsuChangelogs = () => {
